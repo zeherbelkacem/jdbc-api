@@ -1,18 +1,21 @@
 pipeline {
     agent any
-  tools{
-    maven 'maven386'
-  }
+
     stages {
-        stage('mavrn version') {
+        stage('Build') {
             steps {
-               
-                bat 'mvn clean install sonar:sonar'
-              
+                echo 'Building..'
             }
         }
-        
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-    
-    
 }

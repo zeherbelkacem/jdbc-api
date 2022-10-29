@@ -7,7 +7,7 @@ pipeline {
         stage('mavrn version') {
             steps {
                
-                sh 'mvn --version'
+                sh 'mvn clean install sonar:sonar'
               
             }
         }

@@ -6,14 +6,20 @@ pipeline {
     stages {
         stage('sonar') {
             steps {
-                sh 'mvn clean install sonar:sonar'
-            }
-        }
-        stage('package') {
-            steps {
-                sh 'mvn package'
+                withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
             }
         }
         
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+          }
     }
+    
+    
 }

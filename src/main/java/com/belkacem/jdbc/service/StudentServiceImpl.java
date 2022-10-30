@@ -15,11 +15,9 @@ public class StudentServiceImpl {
 	@Autowired
 	private StudentRepository  studentRepository;
 	public List<Student> getAll() {
-		// TODO Auto-generated method stub
 		return studentRepository.getAll();
 	}
 	public Student patchStudent(PatchStudentDTO patchStudentDTO, int id) {
-		// TODO Auto-generated method stub
 		return studentRepository.patchStudent(patchStudentDTO, id);
 	}
 

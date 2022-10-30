@@ -33,8 +33,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
 	@Override
 	public Student patchStudent(PatchStudentDTO patchStudentDTO, int id) {
-		int isUpdated = jdbcTemplate.update(patchSqlQuery,
-				new Object[] { patchStudentDTO.getName(), patchStudentDTO.getNote(), id });
+		int isUpdated = jdbcTemplate.update(patchSqlQuery, patchStudentDTO.getName(), patchStudentDTO.getNote(), id);
 		if (isUpdated == 0)
 			log.info(patchSqlQuery);
 		List<Student> studentDTO = jdbcTemplate.query("SELECT * FROM student", responseDTO);
